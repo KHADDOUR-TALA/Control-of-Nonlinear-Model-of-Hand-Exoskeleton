@@ -1,0 +1,22 @@
+metricsq2 = compute_nonlinear_robustness(d_white.time, d_white.data,q2.time, q2.data,q2_d.time, q2_d.data);
+metricsq3 = compute_nonlinear_robustness(d_white.time, d_white.data,q3.time, q3.data,q3_d.time, q3_d.data);
+metricsq2s = compute_nonlinear_robustness(ds.time, ds.data,q2.time, q2.data,q2_dsine.time, q2_d.data);
+metricsq3s = compute_nonlinear_robustness(ds.time, ds.data,q3.time, q3.data,q3_dsine.time, q3_d.data);
+
+figure;
+subplot(2,2,1); 
+plot(q2.time(:,1), q2.data(:,1), 'k--', q2_d.time(:,1), q2_d.data(:,1), 'g',q2_d1.time(:,1), q2_d1.data(:,1), 'r',q2_d2.time(:,1), q2_d2.data(:,1),'b', 'LineWidth', 1.5);
+xlabel('Time (s)'); ylabel('q_2'); title('q_2 control with presence of white noise'); legend('nominal', 'noise power:0.001','noise power:0.01','noise power:0.005');
+grid on;
+subplot(2,2,2); 
+plot(q3.time(:,1), q3.data(:,1), 'k--', q3_d.time(:,1), q3_d.data(:,1), 'g',q3_d1.time(:,1), q3_d1.data(:,1), 'r',q3_d2.time(:,1), q3_d2.data(:,1),'b', 'LineWidth', 1.5);
+xlabel('Time (s)'); ylabel('q_2'); title('q_3 control with presence of white noise'); legend('nominal', 'noise power:0.001','noise power:0.01','noise power:0.005');
+grid on;
+subplot(2,2,3); 
+plot(q2.time(:,1), q2.data(:,1), 'k--', q2_dsine.time(:,1), q2_dsine.data(:,1), 'g',q2_dsine1.time(:,1), q2_dsine1.data(:,1), 'r',q2_dsine2.time(:,1), q2_dsine2.data(:,1), 'b', 'LineWidth', 1.5);
+xlabel('Time (s)'); ylabel('q_2'); title('q_2 control with presence of sinusoidal noise'); legend('nominal', 'amp=0.005 \omega =1','amp=0.01 \omega =3','amp=0.015 \omega =5');
+grid on;
+subplot(2,2,4); 
+plot(q3.time(:,1), q3.data(:,1), 'k--', q3_dsine.time(:,1), q3_dsine.data(:,1), 'g',q3_dsine1.time(:,1), q3_dsine1.data(:,1), 'r',q3_dsine2.time(:,1), q3_dsine2.data(:,1), 'b', 'LineWidth', 1.5);
+xlabel('Time (s)'); ylabel('q_2'); title('q_3 control with presence of sinusoidal noise'); legend('nominal', 'amp=0.005 \omega =1','amp=0.01 \omega =3','amp=0.015 \omega =5');
+grid on;
